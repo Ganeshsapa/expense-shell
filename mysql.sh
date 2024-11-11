@@ -24,7 +24,7 @@ fi
 }
 
 VALIDATE()
-{   if [ $1 -ne 0 ]
+   if [ $1 -ne 0 ]
         then
             echo " $2 is ..$R FAILED $N" | tee -a $LOG_FILE
             exit 1
@@ -36,3 +36,14 @@ VALIDATE()
   echo "Script started executing at: #(date)" | tee -a $LOG_FILE
 
   CHECK_ROOT
+  dnf install mysql-server -y
+  VALIDATE $? "Installing Mysql server"
+  
+  systemctl enable mysqld
+  VALIDATE $? "Enabled Mysql server"
+
+  systemctl start mysqld
+  VALIDATE $? "Started MySQL server"
+
+  mysql_secure_installtion --set-root-pass ExpenseApp@1
+  VALIDATE $? "setting Up root password"
