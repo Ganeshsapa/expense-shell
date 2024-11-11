@@ -36,11 +36,11 @@ VALIDATE()
   echo "Script started executing at: #(date)" | tee -a $LOG_FILE
 
   CHECK_ROOT
-  dnf install mysql-server -y
-  VALIDATE $? "Installing Mysql server"
+  dnf install mysql-server -y &>>LOG_FILE
+  VALIDATE $? "Installing Mysql server" &>>LOG_FILE
   
   systemctl enable mysqld
-  VALIDATE $? "Enabled Mysql server"
+  VALIDATE $? "Enabled Mysql server" &>>LOG_FILE
 
   systemctl start mysqld
   VALIDATE $? "Started MySQL server"
