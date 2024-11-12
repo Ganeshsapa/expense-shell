@@ -49,9 +49,8 @@ VALIDATE $? "Downloading front application code"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>$LOG_FILE
 VALIDATE $? "Extracting frontend application code"
-pwd
 
-#cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 VALIDATE $? "Copied expense conf"
 
 systemctl restart nginx &>>LOG_FILE
