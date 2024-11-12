@@ -58,6 +58,6 @@ VALIDATE $? "Extract frontend code"
 
 VALIDATE $? "Copied expense conf"54.204.181.68 
 
-#systemctl restart Nginx &>>$LOG_FILE
-sudo systemctl restart nginx &>>$LOG_FILE
+systemctl restart nginx &>>$LOG_FILE
+#sudo systemctl restart nginx &>>$LOG_FILE
 VALIDATE $? "Restarted Nginx"
