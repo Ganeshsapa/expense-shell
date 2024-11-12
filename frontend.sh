@@ -56,7 +56,8 @@ VALIDATE $? "Extract frontend code"
  cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 #cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
 
-VALIDATE $? "Copied expense conf"
+VALIDATE $? "Copied expense conf"54.204.181.68 
 
-systemctl restart Nginx &>>$LOG_FILE
+#systemctl restart Nginx &>>$LOG_FILE
+sudo systemctl restart nginx &>>$LOG_FILE
 VALIDATE $? "Restarted Nginx"
